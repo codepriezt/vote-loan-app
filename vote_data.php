@@ -14,7 +14,7 @@ foreach ($vote_candidates as $row){
     $query = "
     SELECT * FROM tbl_vote WHERE vote_candidates = ' ".$row. "'
     ";
-    $statement = $connect->prepare($query);
+    $statement = $connect->prepare($sql);
     $statement->execute();
     $total_row= $statement->rowCount();
     $percentage_vote = round($total_row/$total_vote_row) * 100;

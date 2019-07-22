@@ -1,18 +1,18 @@
 <?php
 //database_connection.php
 
-$host = "ec2-107-20-173-2.compute-1.amazonaws.com";
-$user = "lovrpbptfqrlkb";
-$password = "98fc2fdc87d7aa66ee2f1d64c4f88ff1132f37d8a2e0782c862480e1b8931d38";
-$dbname = "dflnqv8pdr50op";
-$port = 5432;
+$host = "ec2-174-129-29-101.compute-1.amazonaws.com";
+$user = "cxbklitodqfgxy";
+$password = "5d8b5f3d1253eeb1802f84e1e723af0a6ba2a0f79fe417bf647ab05b03a5c4fc";
+$dbname = "d9bghlen9a6p2o";
+$port = "5432";
 
 //try intiliazing a connection
 
 try{
     // connect to my pgsql db 
 
-    $connect  = new PDO ("pgsql:host=" . $host . "port=" . $port  . "dbname=" . $dbname ."user=" .$user. "password=" . $password) ;
+    $connect  = new PDO ("pgsql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname .";user=" .$user. ";password=" . $password) ;
 
 
 
