@@ -65,29 +65,10 @@
 
             </form>
             <?php
-            $host = "us-cdbr-iron-east-02.cleardb.net";
-            $user = "b69325712d7515";
-            $password = "527d1a683";
-            $dbname = "heroku_077fa93d6720c55";
-            $port = "3306";
-
-            //try intiliazing a connection
-
-            try {
-                // connect to my pgsql db 
-
-                $con  = new PDO("mysql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname . ";user=" . $user . ";password=" . $password);
-
-
-
-                $connect = PDO::setAttribute(PDO::ATTR_ERRMODE, PDO::EERMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                echo 'connection failed: ' . $e->getmessage();
-            }
-
+            include('tconnect.php');
 
             if (isset($_POST['oj'])) {
-                $vote_oj = "update voting set oj = oj+1";
+                $vote_oj = "update demo set oj = oj+1";
                 $run_oj = mysqli_query($con, $vote_oj);
 
                 if ($run_oj) {
@@ -97,7 +78,7 @@
                 }
             }
             if (isset($_POST['bams'])) {
-                $vote_bams = "update voting set bams = bams+1";
+                $vote_bams = "update demo set bams = bams+1";
                 $run_bams = mysqli_query($con, $vote_bams);
 
                 if ($run_bams) {
@@ -108,7 +89,7 @@
             }
 
             if (isset($_POST['ebuka'])) {
-                $vote_ebuka = "update voting set ebuka = ebuka+1";
+                $vote_ebuka = "update demo set ebuka = ebuka+1";
                 $run_ebuka = mysqli_query($con, $vote_ebuka);
 
                 if ($run_ebuka) {
@@ -119,7 +100,7 @@
             }
 
             if (isset($_POST['ziks'])) {
-                $vote_ziks = "update voting set ziks = ziks+1";
+                $vote_ziks = "update demo set ziks = ziks+1";
                 $run_ziks = mysqli_query($con, $vote_ziks);
 
                 if ($run_ziks) {
@@ -134,7 +115,7 @@
 
 
             if (isset($_GET['results'])) {
-                $get_votes = "select * from voting ";
+                $get_votes = "select * from demo ";
                 $run_votes = mysqli_query($con, $get_votes);
                 $row_votes = mysqli_fetch_array($run_votes);
 

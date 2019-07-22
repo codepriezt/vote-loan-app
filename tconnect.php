@@ -1,26 +1,61 @@
 <?php
-//database_connection.php   mysql://b69325712d7515:27d1a683@us-cdbr-iron-east-02.cleardb.net/heroku_077fa93d6720c55?reconnect=true
-
-$host = "us-cdbr-iron-east-02.cleardb.net";
-$user = "b69325712d7515";
-$password = "527d1a683";
-$dbname = "heroku_077fa93d6720c55";
-$port = "3306";
-
-//try intiliazing a connection
-
-try{
-    // connect to my pgsql db 
-
-    $connect  = new PDO ("mysql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname .";user=" .$user. ";password=" . $password) ;
+//database_connection.php   
+//Get Heroku ClearDB connection information
+$cleardb_url      = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server   = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db       = substr($cleardb_url["path"], 1);
 
 
+$active_group = 'default';
+$query_builder = TRUE;
 
-$connect = PDO::setAttribute(PDO::ATTR_ERRMODE ,PDO::EERMODE_EXCEPTION);
-}
-catch(PDOException $e){
-    echo 'connection failed: '. $e->getmessage();
-}
+//intiliazing a connection
+$db ['default']= array(
+        'dsn' => '',
+        'hostname'=>'$cleardb_server',
+        'username'=>'$cleardb_username',
+        'password'=> '$cleardb_password',
+        'database' => $cleardb_db,
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => (ENVIRONMENT !== 'production'),
+        'cache_on' => FALSE,
+        'cachedir' => '',
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+        'swap_pre' => '',
+        'encrypt' => FALSE,
+        'compress' => FALSE,
+        'stricton' => FALSE,
+        'failover' => array(),
+        'save_queries' => TRUE
+);
+
+
+
+
+
+
+
+
+
+
+
+
+//     // connect to my pgsql db 
+
+//     $connect  = new PDO ("mysql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname .";user=" .$user. ";password=" . $password) ;
+
+
+
+// $connect = PDO::setAttribute(PDO::ATTR_ERRMODE ,PDO::EERMODE_EXCEPTION);
+// }
+// catch(PDOException $e){
+//     echo 'connection failed: '. $e->getmessage();
+// }
 
 
 
