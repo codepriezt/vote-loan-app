@@ -6,7 +6,7 @@ include('tconnect.php');
 if(isset($_POST["vote_option"]))
 {
     $query = "
-    INSERT into tbl_vote
+    INSERT into tbl_heroku_077fa93d6720c55
     (vote_candidates) VALUES (:vote_candidates)
     ";
 

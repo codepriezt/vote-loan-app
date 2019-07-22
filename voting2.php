@@ -65,9 +65,26 @@
 
             </form>
             <?php
+            $host = "us-cdbr-iron-east-02.cleardb.net";
+            $user = "b69325712d7515";
+            $password = "527d1a683";
+            $dbname = "heroku_077fa93d6720c55";
+            $port = "3306";
+
+            //try intiliazing a connection
+
+            try {
+                // connect to my pgsql db 
+
+                $con  = new PDO("mysql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname . ";user=" . $user . ";password=" . $password);
 
 
-            $con = mysqli_connect("localhost", "root", "", "vote");
+
+                $connect = PDO::setAttribute(PDO::ATTR_ERRMODE, PDO::EERMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                echo 'connection failed: ' . $e->getmessage();
+            }
+
 
             if (isset($_POST['oj'])) {
                 $vote_oj = "update voting set oj = oj+1";
@@ -117,7 +134,7 @@
 
 
             if (isset($_GET['results'])) {
-                $get_votes = "select * from votes";
+                $get_votes = "select * from voting ";
                 $run_votes = mysqli_query($con, $get_votes);
                 $row_votes = mysqli_fetch_array($run_votes);
 

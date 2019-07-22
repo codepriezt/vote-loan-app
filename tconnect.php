@@ -1,18 +1,18 @@
 <?php
-//database_connection.php
+//database_connection.php   mysql://b69325712d7515:27d1a683@us-cdbr-iron-east-02.cleardb.net/heroku_077fa93d6720c55?reconnect=true
 
-$host = "ec2-174-129-29-101.compute-1.amazonaws.com";
-$user = "cxbklitodqfgxy";
-$password = "5d8b5f3d1253eeb1802f84e1e723af0a6ba2a0f79fe417bf647ab05b03a5c4fc";
-$dbname = "d9bghlen9a6p2o";
-$port = "5432";
+$host = "us-cdbr-iron-east-02.cleardb.net";
+$user = "b69325712d7515";
+$password = "527d1a683";
+$dbname = "heroku_077fa93d6720c55";
+$port = "3306";
 
 //try intiliazing a connection
 
 try{
     // connect to my pgsql db 
 
-    $connect  = new PDO ("pgsql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname .";user=" .$user. ";password=" . $password) ;
+    $connect  = new PDO ("mysql:host=" . $host . ";port=" . $port  . ";dbname=" . $dbname .";user=" .$user. ";password=" . $password) ;
 
 
 

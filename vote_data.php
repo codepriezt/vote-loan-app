@@ -12,7 +12,7 @@ $total_vote_row = total_rows($connect);
 foreach ($vote_candidates as $row){
 
     $query = "
-    SELECT * FROM tbl_vote WHERE vote_candidates = ' ".$row. "'
+    SELECT * FROM tbl_heroku_077fa93d6720c55 WHERE vote_candidates = ' ".$row. "'
     ";
     $statement = $connect->prepare($sql);
     $statement->execute();
@@ -58,7 +58,7 @@ echo $output;
 
 function  total_rows($connect)
 {
-    $query = "SELECT * FROM  tbl_vote";
+    $query = "SELECT * FROM  tbl_heroku_077fa93d6720c55";
     $statement =$connect->prepare($query);
     $statement->execute();
     return $statement->rowCount();
